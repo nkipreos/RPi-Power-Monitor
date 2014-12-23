@@ -55,4 +55,4 @@ docs/_build/
 target/
 
 # Config
-config/
+*.ini
