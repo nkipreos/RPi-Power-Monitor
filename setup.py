@@ -1,14 +1,18 @@
 import hashlib
 import os
 import uuid
+import ConfigParser
 
 path = os.getcwd()
-keys_file = path + '/keys.txt'
+conf_file = path + '/config/config.ini'
+conf = ConfigParser.ConfigParser()
+conf.read(conf_file)
 
-if not os.path.isfile(keys_file):
-  f = open(keys_file, 'w+')
-  f.write(hashlib.sha256(str(uuid.uuid1())).hexdigest())
-  f.close()
+if conf.get("Config","deviceexists") == 'False':
+  conf.set("Config","deviceexists","True")
+  conf.set("Config","apikey",hashlib.sha256(str(uuid.uuid1())).hexdigest())
+  conf.set("Config","streamid","<id_del_stream>")
+  with open(conf_file, 'wb') as configfile:
+    conf.write(configfile)
 else:
-  f = open(keys_file, 'r+')
-  print f.readlines()
+  print conf.get("Config", "apikey") 
