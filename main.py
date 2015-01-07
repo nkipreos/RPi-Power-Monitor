@@ -1,4 +1,30 @@
-import setup
+import ConfigParser
+import os
+import serial
 
-x = setup.Configuration()
-print x.get_apikey()
+#####################
+# Get Config Values #
+#####################
+
+path = os.getcwd()
+conf_file = path + '/config/config.ini'
+conf = ConfigParser.ConfigParser()
+conf.read(conf_file)
+remote_device_id = conf.get("Config", "remote_device_id")
+power_stream_id = conf.get("Config", "power_stream_id")
+temperature_stream_id = conf.get("Config", "temperature_stream_id")
+
+######################
+# Config Serial Port #
+######################
+
+serial_port = Serial("/dev/ttyAMA0", 9600, timeout = 1)
+
+#############
+# Main Loop #
+#############
+
+while 1:
+  line = serial_port.readline()
+  print line
+  serial_port.flush
