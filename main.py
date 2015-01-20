@@ -26,7 +26,7 @@ serial_port = serial.Serial("/dev/ttyAMA0", 9600, timeout = 1)
 
 while 1:
   serial_port.flushInput()
-  while serial_port.inWating() == 0:
+  while serial_port.inWaiting() == 0:
     pass
   line = serial_port.readline()
   print line
