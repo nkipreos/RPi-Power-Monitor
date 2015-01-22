@@ -11,8 +11,8 @@ conf_file = path + '/config/config.ini'
 conf = ConfigParser.ConfigParser()
 conf.read(conf_file)
 remote_device_id = conf.get("Config", "remote_device_id")
-ch1_id = conf.get("Config", "ch1_id")
-ch2_id = conf.get("Config", "ch2_id")
+ch1_id = conf.get("Config", "stream1_id")
+ch2_id = conf.get("Config", "stream2_id")
 
 ######################
 # Config Serial Port #
