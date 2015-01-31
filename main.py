@@ -52,8 +52,14 @@ while 1:
     pass
   line = serial_port.readline()
   data = line.split(" ")
-  node_id, ch1_data, ch2_data, ch3_data, ch4_data, ch5_data, ch6_data = getAndParseData(data)
+  try:
+    node_id, ch1_data, ch2_data, ch3_data, ch4_data, ch5_data, ch6_data = getAndParseData(data)
+  except:
+    print "Garbage in the serial input"
   current_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-  print sendData({'value': ch1_data, 'measured_at': current_time}, ch1_id)
-  print str(ch1_data)
+  try:
+    print sendData({'value': ch1_data, 'measured_at': current_time}, ch1_id)
+    print str(ch1_data)
+  except:
+    print "Error in sending data"
   serial_port.flushInput()
