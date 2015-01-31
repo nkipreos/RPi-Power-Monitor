@@ -36,8 +36,9 @@ def getAndParseData(data):
 #######################
 
 def sendData(json_data, channel_id):
-  headers = {'Content-Type': 'application/json', 'REMOTE-DEVICE-ID', remote_device_id, 'STREAM-ID', channel_id}
+  headers = {'Content-Type': 'application/json', 'REMOTE-DEVICE-ID': remote_device_id, 'STREAM-ID': channel_id}
   req = requests.post("http://173.255.205.163:40500/api/new_data", data=json.dumps(json_data), headers=headers)
+  return req.status_code
 
 
 #############
@@ -52,6 +53,6 @@ while 1:
   data = line.split(" ")
   node_id, ch1_data, ch2_data, ch3_data, ch4_data, ch5_data, ch6_data = getAndParseData(data)
   current_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-  sendData({'value': ch1_data, 'measured_at': current_time}, ch1_id)
+  print sendData({'value': ch1_data, 'measured_at': current_time}, ch1_id)
   print str(ch1_data)
   serial_port.flushInput()
