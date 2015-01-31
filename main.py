@@ -25,13 +25,7 @@ serial_port = serial.Serial("/dev/ttyAMA0", 9600, timeout = 1)
 ######################
 
 def getAndParseData(data):
-  return int(data[1]), 
-  int(data[2]) + int(data[3])*255,
-  int(data[4]) + int(data[5])*255,
-  int(data[6]) + int(data[7])*255,
-  int(data[8]) + int(data[9])*255,
-  int(data[10]) + int(data[11])*255,
-  int(data[12]) + int(data[13])*255,
+  return int(data[1]), int(data[2]) + int(data[3])*255, int(data[4]) + int(data[5])*255, int(data[6]) + int(data[7])*255, int(data[8]) + int(data[9])*255, int(data[10]) + int(data[11])*255, int(data[12]) + int(data[13])*255,
 
 #############
 # Main Loop #
