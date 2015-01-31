@@ -29,5 +29,19 @@ while 1:
   while serial_port.inWaiting() == 0:
     pass
   line = serial_port.readline()
-  print line
+  data = line.split(" ")
+  node_id = data[0]
+  a = int(data[1])
+  b = int(data[2])
+  c = int(data[3])
+  d = int(data[4])
+  e = int(data[5])
+  f = int(data[6])
+  g = int(data[7])
+  h = int(data[8])
+  i = int(data[9])
+  j = int(data[10])
+  k = int(data[11])
+  l = int(data[12])
+  print str(a + b*255)
   serial_port.flushInput()
