@@ -23,6 +23,7 @@ ch2_id = conf.get("Config", "stream2_id")
 ######################
 
 serial_port = serial.Serial("/dev/ttyAMA0", 9600, timeout = 1)
+serial_port.write("4b\r\n") # Configures RF12 for 433 MHz
 
 ######################
 # Get and Parse Data #
