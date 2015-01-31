@@ -20,6 +20,19 @@ ch2_id = conf.get("Config", "stream2_id")
 
 serial_port = serial.Serial("/dev/ttyAMA0", 9600, timeout = 1)
 
+######################
+# Get and Parse Data #
+######################
+
+def getAndParseData(data):
+  return int(data[1]), 
+  int(data[2]) + int(data[3])*255,
+  int(data[4]) + int(data[5])*255,
+  int(data[6]) + int(data[7])*255,
+  int(data[8]) + int(data[9])*255,
+  int(data[10]) + int(data[11])*255,
+  int(data[12]) + int(data[13])*255,
+
 #############
 # Main Loop #
 #############
@@ -30,18 +43,6 @@ while 1:
     pass
   line = serial_port.readline()
   data = line.split(" ")
-  node_id = data[1]
-  a = int(data[2])
-  b = int(data[3])
-  c = int(data[4])
-  d = int(data[5])
-  e = int(data[6])
-  f = int(data[7])
-  g = int(data[8])
-  h = int(data[9])
-  i = int(data[10])
-  j = int(data[11])
-  k = int(data[12])
-  l = int(data[13])
-  print str(a + b*255)
+  node_id, ch1_data, ch2_data, ch3_data, ch4_data, ch5_data, ch6_data = getAndParseData(data)
+  print str(ch1_data)
   serial_port.flushInput()
