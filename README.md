@@ -11,7 +11,7 @@ After reading from the serial port the data is posted to a web service via a JSO
 
 ##Pre Requisites##
 
-For running the following program some Python libraries are needed. These are **ConfigParse**, **os** and **pyserial**. The last one, you must install it.
+For running the following program some Python libraries are needed. These are **ConfigParse**, **os** and **pyserial**. You must install the last one.
 
 ##Instructions##
 
