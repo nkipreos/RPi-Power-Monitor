@@ -4,6 +4,7 @@ import serial
 import requests
 import json
 from time import gmtime, strftime
+import datetime
 
 #####################
 # Get Config Values #
@@ -61,5 +62,13 @@ while 1:
     print sendData({'value': ch1_data, 'measured_at': current_time}, ch1_id)
     print str(ch1_data)
   except:
-    print "Error in sending data"
+    print "Error in sending data, creating backup"
+    date = datetime.date.today()
+    day = str(date.day).zfill(2)
+    month = str(date.month).zfill(2)
+    year = str(date.year).zfill(2)
+    current_date = "%s-%s-%s" % (year,month,day)
+    f = open('backups/' + current_date + '.txt', 'a')
+    f.write(ch1_data + "," + current_time + "\n")
+    f.close()
   serial_port.flushInput()
