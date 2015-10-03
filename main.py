@@ -17,7 +17,13 @@ conf.read(conf_file)
 remote_device_id = conf.get("Config", "remote_device_id")
 ch1_id = conf.get("Config", "stream1_id")
 ch2_id = conf.get("Config", "stream2_id")
-ch1_data = 0, ch2_data = 0, ch3_data = 0, ch4_data = 0, ch5_data = 0, ch6_data = 0
+ch3_id = conf.get("Config", "stream2_id")
+ch1_data = 0
+ch2_data = 0
+ch3_data = 0
+ch4_data = 0
+ch5_data = 0
+ch6_data = 0
 
 
 ######################
